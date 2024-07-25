@@ -15,11 +15,11 @@ def fetch_medal_data(url):
 
 
 def parse_medals(soup):
-    rows = soup.find_all('tr', class_='svelte-1pwyfrz')
+    rows = soup.find_all('table', class_='svelte-1pwyfrz')
     medal_data = []
     for row in rows:
-        country = row.find('td', class_='text mid-weight svelte-1pwyfrz').text.strip()
-        gold = int(row.find('td', class_='td-inner svelte-1pwyfrz').text.strip())
+        country = row.find('td', class_='text mid-weight').text.strip()
+        gold = int(row.find('td', class_='number heatmap svelte-1pwyfrz').text.strip())
         silver = int(row.find('td', class_='td-inner svelte-1pwyfrz').text.strip())
         bronze = int(row.find('td', class_='td-inner svelte-1pwyfrz').text.strip())
         medal_data.append({
@@ -31,7 +31,7 @@ def parse_medals(soup):
     return medal_data
 
 if __name__ == '__main__':
-    url = 'https://www.bloomberg.com/graphics/paris-2024-summer-olympics-medal-count/'  # Change to your chosen URL
+    url = 'https://www.bloomberg.com/graphics/paris-2024-summer-olympics-medal-count/'
     html_soup = fetch_medal_data(url)
     if html_soup:
         results = parse_medals(html_soup)
