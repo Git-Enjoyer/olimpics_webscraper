@@ -15,13 +15,13 @@ def fetch_medal_data(url):
 
 
 def parse_medals(soup):
-    rows = soup.find_all('table', class_='svelte-1pwyfrz')
+    rows = soup.find_all('tbody', attrs={'class="svelte-1pwyfrz'})
     medal_data = []
     for row in rows:
-        country = row.find('td', class_='text mid-weight').text.strip()
-        gold = int(row.find('td', class_='number heatmap svelte-1pwyfrz').text.strip())
-        silver = int(row.find('td', class_='td-inner svelte-1pwyfrz').text.strip())
-        bronze = int(row.find('td', class_='td-inner svelte-1pwyfrz').text.strip())
+        country = row.find('div', {"data-key": "name"}).text.strip()
+        gold = row.find('div', {"data-key": "gold"}).text.strip()
+        silver = row.find('div', {"data-key": "silver"}).text.strip()
+        bronze = row.find('div', {"data-key": "bronze"}).text.strip()
         medal_data.append({
             'country': country,
             'gold': gold,
