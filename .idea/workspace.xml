@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a61dfaee-1c6b-4cba-88b2-205384a67017" name="Changes" comment="cmt 1">
+    <list default="true" id="a61dfaee-1c6b-4cba-88b2-205384a67017" name="Changes" comment="cmt 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_scraper.py" afterDir="false" />
     </list>
@@ -23,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Git-Enjoyer"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Git-Enjoyer/olimpics_webscraper.git",
+    "accountId": "53c792ee-9827-4139-80ba-a44327eed75c"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -96,11 +108,20 @@
       <option name="project" value="LOCAL" />
       <updated>1721937639941</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="cmt 3">
+      <option name="closed" value="true" />
+      <created>1722123444404</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722123444404</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cmt 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="cmt 1" />
+    <MESSAGE value="cmt 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="cmt 3" />
   </component>
 </project>

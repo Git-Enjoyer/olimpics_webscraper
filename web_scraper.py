@@ -10,22 +10,16 @@ from bs4 import BeautifulSoup
 
 
 #url = 'https://olympics.com/en/paris-2024/medals'
-# Element inside cross-origin iframe. Copy Selectors by right click on element or open iframe src url in new tab.
+
 def fetch_medal_data(url):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(url)
-    time.sleep(5)  # Allow time for the page to load
-
-    iframe = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "sp_message_iframe_1135992"))
-    )
-    driver.switch_to.frame(iframe)
 
     try:
         # Locate the button using WebDriver wait and expected conditions for visibility and clickable state
         button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(
-                (By.XPATH, "//button[@id='onetrust-accept-btn-handler']"))
+                (By.XPATH, "//button[normalize-space()='Yes, I agree']"))
         )
         # Execute JavaScript to click the button
         driver.execute_script("arguments[0].click();", button)
@@ -35,7 +29,6 @@ def fetch_medal_data(url):
         print("Error handling overlays or clicking the cookie button:", e)
 
     html = driver.page_source
-    time.sleep(5)
     driver.quit()  # Close the driver after operations are complete
 
     if html:
@@ -44,15 +37,16 @@ def fetch_medal_data(url):
         print("Failed to retrieve or parse page")
         return None
 
-
 def parse_medals(soup):
-    rows = soup.find_all('tbody', class_="svelte-1pwyfrz")
+    #print(soup)
+    rows = soup.find_all('tr', class_='ssrcss-dhlz6k-TableRowBody e1xoxfm60')
     medal_data = []
     for row in rows:
-        country = row.find('div', {"data-key": "name"}).text.strip()
-        gold = row.find('div', {"data-key": "gold"}).text.strip()
-        silver = row.find('div', {"data-key": "silver"}).text.strip()
-        bronze = row.find('div', {"data-key": "bronze"}).text.strip()
+        country = row.find('span', class_='ssrcss-pek3um-AbbreviatedCountryName ew4ldjd1').text.strip()
+        gold = row.find('td', class_='ssrcss-fvkmzs-StyledTableData ef9ipf1').text.strip()
+        silver = row.find('td', class_='ssrcss-fvkmzs-StyledTableData ef9ipf1').text.strip()
+        bronze = row.find('td', class_='ssrcss-fvkmzs-StyledTableData ef9ipf1').text.strip()
+
         medal_data.append({
             'country': country,
             'gold': gold,
@@ -63,7 +57,7 @@ def parse_medals(soup):
 
 
 if __name__ == '__main__':
-    url = 'https://www.bloomberg.com/graphics/paris-2024-summer-olympics-medal-count/'
+    url = 'https://www.bbc.co.uk/sport/olympics/paris-2024/medals'
     html_soup = fetch_medal_data(url)
     if html_soup:
         results = parse_medals(html_soup)
