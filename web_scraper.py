@@ -69,7 +69,7 @@ def insert_data(medal_data):
         conn = psycopg2.connect(
             dbname="olympic_sweepstake",
             user="postgres",
-            password="Alank@4321",
+            password="4321",
             host="localhost",
             port=5432
         )
