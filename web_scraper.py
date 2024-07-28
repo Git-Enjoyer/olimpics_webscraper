@@ -37,7 +37,6 @@ def fetch_medal_data(url):
         print("Failed to retrieve or parse page")
         return None
 
-
 def parse_medals(soup):
     rows = soup.find_all('tr', class_='ssrcss-dhlz6k-TableRowBody e1xoxfm60')
     medal_data = []
